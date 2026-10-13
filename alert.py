@@ -3,8 +3,10 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import requests
+import os
+API_KEY = os.environ["OPENWEATHER_API_KEY"]
 par = {
-    "appid": "7c12fd8f6610ceb39b051f2ae84743ff",
+    "appid": API_KEY,
     "lat": 17.385044,
     "lon": 78.486671,
     "cnt": 4,
@@ -15,7 +17,7 @@ endpoint = "https://api.openweathermap.org/data/2.5/forecast"
 SENDER_EMAIL = "surakantiakshithareddy04@gmail.com"
 RECEIVER_EMAIL = "surakantiakshithareddy04@gmail.com"  # Sending to yourself
 # Use the 16-character Google App Password here (no spaces)
-APP_PASSWORD = "qtvq swxj xvnb adyo"  
+APP_PASSWORD = os.environ["GMAIL_APP_PASSWORD"]
 
 # 3. Fetch Weather Data
 
