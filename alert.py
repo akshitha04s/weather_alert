@@ -43,14 +43,14 @@ trigger_code = None
 # Loop through the 4 forecast intervals
 for hourdata in weatherdata["list"]:
     condcode = hourdata["weather"][0]["id"]
-    if condcode < 850:
+    if condcode < 700:
         trigger_email = True
         trigger_code = condcode
         break  # Exit loop early since we found a matching condition
 
 # 4. Send Email if condition is met
 if trigger_email:
-    print(f"Condition code {trigger_code} is less than 850! Sending email...")
+    print(f"Condition code {trigger_code} is less than 700! Sending email...")
     
     # Create the email structure
     msg = MIMEMultipart()
@@ -58,7 +58,7 @@ if trigger_email:
     msg['To'] = RECEIVER_EMAIL
     msg['Subject'] = "⚠️ Weather Alert: Action Required!"
     
-    body = f"Hello,\n\nYour weather script detected a condition code of {trigger_code}, which is below 850.\n\nPlease check the weather forecast."
+    body = f"Hello,\n\nYour weather script detected a condition code of {trigger_code}, which is below 700.\n\nPlease check the weather forecast and carryumbrella."
     msg.attach(MIMEText(body, 'plain'))
     
     try:
